@@ -11,7 +11,10 @@ export class LoopFormComponent {
   //static content
   selectedEmail = {
     from: { name: 'Mitja Potocin', email: 'mitja.potocin@gmail.com' },
-    to: [{ name: 'Jobs', email: 'jobs@intheloop.com' }],
+    to: [
+      { name: 'Jobs', email: 'jobs@intheloop.com' },
+      { name: 'CTO', email: 'cto@intheloop.com' },
+    ],
     subject: 'Frontend developer',
     body:
       'I enjoy being challenged and engaging with projects that require me to work outside my comfort and knowledge set, as continuing to learn new languages and development techniques are important to me and the success of your organization.',

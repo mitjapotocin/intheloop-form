@@ -36,10 +36,10 @@
             </p>
             <p class="to">
               <span>to </span>
-              <!-- TODO: add comma -->
-              <span *ngFor="let recipient of selectedEmail.to">{{
-                recipient.name
-              }}</span>
+              <span *ngFor="let recipient of selectedEmail.to; index as i">
+                <span *ngIf="i > 0">, </span>
+                {{ recipient.name }}</span
+              >
             </p>
           </div>
           <div class="body">
