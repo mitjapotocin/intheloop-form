@@ -1,0 +1,28 @@
+.dropdown {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  ul {
+    padding: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 0px 0px 5px 3px #0000001f;
+    list-style-type: none;
+  }
+
+  li {
+    padding: 8px 20px;
+    cursor: pointer;
+    &:hover {
+      background: #ececec;
+    }
+  }
+
+  .email {
+    font-size: 0.8em;
+    opacity: 0.65;
+  }
+}
