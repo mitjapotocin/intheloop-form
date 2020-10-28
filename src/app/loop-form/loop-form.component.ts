@@ -30,28 +30,27 @@ export class LoopFormComponent {
   ];
 
   usersOptions = this.users.slice(5);
-
+  messageInput = '';
+  nameInput = '';
   selectedUsers = [];
   inputFocused = false;
   showDropdown = false;
 
   onInputFocus() {
-    this.inputFocused = true;
-    this.handleDropdownState();
+    this.showDropdown = true;
   }
 
   onInputBlur() {
-    this.inputFocused = false;
-    setTimeout(this.handleDropdownState, 0);
+    this.showDropdown = false;
   }
 
-  handleDropdownState() {
-    this.showDropdown = this.inputFocused;
-  }
-
-  updateSelectedUsers(user) {
+  updateSelectedUsers(user: object) {
     this.selectedUsers = [...this.selectedUsers, user];
     this.showDropdown = false;
+  }
+
+  loopSubmit() {
+    console.log(this.messageInput, this.nameInput);
   }
 
   filter() {

@@ -1,11 +1,10 @@
 <div class="popup">
   <div class="container">
     <h1 class="adapt">{{ selectedEmail.subject }}</h1>
-    <form action="">
+    <form #loopForm="ngForm" (ngSubmit)="loopSubmit()">
       <div class="input-dropdown-wrapper">
         <div class="input-wrapper adapt">
           <p class="title">Share email with your teammates</p>
-
           <span *ngFor="let user of selectedUsers" class="selected-user">{{
             user.name
           }}</span>
@@ -15,8 +14,11 @@
             class="name-input"
             (focus)="onInputFocus()"
             (blur)="onInputBlur()"
+            [(ngModel)]="nameInput"
+            name="nameInput"
             value=""
             placeholder="Type name or email"
+            autocomplete="off"
           />
           <!-- <button (click)="filter()">click</button> -->
         </div>
@@ -53,7 +55,9 @@
             type="text"
             class="message-input"
             placeholder="Add a comment..."
-            name="message"
+            name="messageInput"
+            [(ngModel)]="messageInput"
+            autocomplete="off"
           />
         </div>
 

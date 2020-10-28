@@ -5,7 +5,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   template: `
     <div class="dropdown" [hidden]="!showDropdown">
       <ul *ngIf="usersOptionsAvailable()">
-        <li *ngFor="let user of users" (click)="handleClick(user)">
+        <li *ngFor="let user of users" (mousedown)="handleClick(user)">
           <p class="name">
             {{ user.name }}
           </p>
