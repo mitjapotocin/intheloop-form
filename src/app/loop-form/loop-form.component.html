@@ -11,12 +11,17 @@
           <input
             type="text"
             class="name-input"
+            (focus)="onInputFocus()"
+            (blur)="onInputBlur()"
             value=""
             placeholder="Type name or email"
           />
           <!-- <button (click)="filter()">click</button> -->
         </div>
-        <f-dropdown [users]="users"></f-dropdown>
+        <f-dropdown
+          [users]="usersOptions"
+          [showDropdown]="showDropdown"
+        ></f-dropdown>
       </div>
 
       <div class="adapt">

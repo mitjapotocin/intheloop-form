@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { getMaxListeners } from 'process';
+import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 
 @Component({
   selector: 'loop-form',
@@ -28,10 +29,22 @@ export class LoopFormComponent {
     { name: 'Marta Orndorff', email: 'marta.orndorff@gmail.com' },
   ];
 
+  usersOptions = this.users.slice(5);
+
   selectedUsers = [
     { name: 'Irina Fierro', email: 'irina.fierro@gmail.com' },
     { name: 'Irina Fierro', email: 'irina.fierro@gmail.com' },
   ];
+
+  showDropdown = false;
+
+  onInputFocus() {
+    this.showDropdown = true;
+  }
+
+  onInputBlur() {
+    this.showDropdown = false;
+  }
 
   filter() {
     this.users = [];

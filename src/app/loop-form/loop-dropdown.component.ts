@@ -8,4 +8,12 @@ import { Component, Input } from '@angular/core';
 export class LoopDropdownComponent {
   title = 'dropdown';
   @Input() users: any;
+  @Input() showDropdown: boolean;
+
+  hideDropdown = false;
+
+  userClicked(user) {
+    console.log(user);
+    this.hideDropdown = true;
+  }
 }

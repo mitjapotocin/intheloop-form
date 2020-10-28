@@ -1,6 +1,6 @@
-<div class="dropdown">
+<div class="dropdown" [class.active]="showDropdown">
   <ul>
-    <li *ngFor="let user of users">
+    <li *ngFor="let user of users" (click)="userClicked(user)">
       <p class="name">
         {{ user.name }}
       </p>
