@@ -29,7 +29,7 @@ export class LoopFormComponent {
     { name: 'Marta Orndorff', email: 'marta.orndorff@gmail.com' },
   ];
 
-  usersOptions = this.users.slice(5);
+  dropdownOptions = this.users.slice(5);
   messageInput = '';
   nameInput = '';
   selectedUsers = [];
@@ -51,6 +51,18 @@ export class LoopFormComponent {
 
   loopSubmit() {
     console.log(this.messageInput, this.nameInput);
+  }
+
+  handleNameInput() {
+    console.log(this.nameInput);
+    this.dropdownOptions = this.users
+      .filter((user) => {
+        return (
+          user.name.toLowerCase().includes(this.nameInput.toLowerCase()) ||
+          user.email.toLowerCase().includes(this.nameInput.toLowerCase())
+        );
+      })
+      .slice(0, 5);
   }
 
   filter() {

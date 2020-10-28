@@ -15,8 +15,8 @@
             (focus)="onInputFocus()"
             (blur)="onInputBlur()"
             [(ngModel)]="nameInput"
+            (input)="handleNameInput()"
             name="nameInput"
-            value=""
             placeholder="Type name or email"
             autocomplete="off"
           />
@@ -24,7 +24,7 @@
         </div>
         <f-dropdown
           (eventUserClicked)="updateSelectedUsers($event)"
-          [users]="usersOptions"
+          [users]="dropdownOptions"
           [showDropdown]="showDropdown"
         ></f-dropdown>
       </div>
