@@ -40,11 +40,12 @@ export class LoopFormComponent {
   messageInput = '';
   nameInput = '';
   showDropdown = false;
+  showSuccessMessage = false;
+  fieldsetDisabled = false;
   formData = {
     message: this.messageInput,
     selectedUsers: [],
   };
-  showSuccessMessage = false;
 
   onInputFocus() {
     this.showDropdown = true;
@@ -69,7 +70,12 @@ export class LoopFormComponent {
       message: this.messageInput,
       selectedUsers: this.selectedUsers,
     };
+
     this.showSuccessMessage = true;
+
+    if (this.formData.selectedUsers.length > 0) {
+      this.fieldsetDisabled = true;
+    }
   }
 
   removeSelected(index: number) {
