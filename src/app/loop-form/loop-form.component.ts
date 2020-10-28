@@ -40,6 +40,11 @@ export class LoopFormComponent {
   messageInput = '';
   nameInput = '';
   showDropdown = false;
+  formData = {
+    message: this.messageInput,
+    selectedUsers: [],
+  };
+  showSuccessMessage = false;
 
   onInputFocus() {
     this.showDropdown = true;
@@ -60,7 +65,11 @@ export class LoopFormComponent {
   }
 
   loopSubmit() {
-    console.log(this.messageInput, this.nameInput);
+    this.formData = {
+      message: this.messageInput,
+      selectedUsers: this.selectedUsers,
+    };
+    this.showSuccessMessage = true;
   }
 
   removeSelected(index) {

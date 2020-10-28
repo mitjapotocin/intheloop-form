@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(calc(100% + 20px));
+  padding: 20px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: $box-shadow;
+  color: $black_medium;
+  border-bottom: 6px solid $blue;
+
+  &.danger {
+    border-bottom: 6px solid $purple;
+  }
+}
+
+.name {
+  color: $blue;
+}
+
+.danger {
+  color: $purple;
+}

@@ -10,7 +10,6 @@
               {{ user.name }}
             </span>
           </span>
-
           <input
             type="text"
             class="name-input"
@@ -29,7 +28,6 @@
           [showDropdown]="showDropdown"
         ></f-dropdown>
       </div>
-
       <div class="adapt">
         <div class="email-wrapper adapt">
           <div class="head">
@@ -79,5 +77,9 @@
         </div>
       </div>
     </form>
+    <success-message
+      *ngIf="showSuccessMessage"
+      [formData]="formData"
+    ></success-message>
   </div>
 </div>
