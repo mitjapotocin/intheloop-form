@@ -29,23 +29,27 @@ export class LoopFormComponent {
     { name: 'Marta Orndorff', email: 'marta.orndorff@gmail.com' },
   ];
 
-  dropdownOptions = this.users.slice(5);
+  usersNotSelected = [...this.users];
+  dropdownOptions = [];
+  selectedUsers = [];
   messageInput = '';
   nameInput = '';
-  selectedUsers = [];
-  inputFocused = false;
   showDropdown = false;
 
   onInputFocus() {
     this.showDropdown = true;
+    this.filterDropdownOptions();
   }
 
   onInputBlur() {
     this.showDropdown = false;
   }
 
-  updateSelectedUsers(user: object) {
+  updateSelectedUsers(user: { name: string; email: string }) {
     this.selectedUsers = [...this.selectedUsers, user];
+    this.usersNotSelected = this.usersNotSelected.filter((user_) => {
+      return !(user_.name === user.name && user_.email === user.email);
+    });
     this.showDropdown = false;
   }
 
@@ -53,16 +57,17 @@ export class LoopFormComponent {
     console.log(this.messageInput, this.nameInput);
   }
 
-  handleNameInput() {
+  filterDropdownOptions() {
     console.log(this.nameInput);
-    this.dropdownOptions = this.users
-      .filter((user) => {
-        return (
-          user.name.toLowerCase().includes(this.nameInput.toLowerCase()) ||
-          user.email.toLowerCase().includes(this.nameInput.toLowerCase())
-        );
-      })
-      .slice(0, 5);
+    this.dropdownOptions = this.usersNotSelected.filter((user) => {
+      return (
+        user.name.toLowerCase().includes(this.nameInput.toLowerCase()) ||
+        user.email.toLowerCase().includes(this.nameInput.toLowerCase())
+      );
+    });
+
+    // always showing max 5 results
+    this.dropdownOptions = this.dropdownOptions.slice(0, 5);
   }
 
   filter() {
