@@ -2,23 +2,25 @@
   <div class="container">
     <h1 class="adapt">{{ selectedEmail.subject }}</h1>
     <form action="">
-      <div class="input-wrapper adapt">
-        <p class="title">Share email with your teammates</p>
-        <div class="selected-users">
-          <span *ngFor="let user of selectedUsers">{{ user.name }}</span>
+      <div class="input-dropdown-wrapper">
+        <div class="input-wrapper adapt">
+          <p class="title">Share email with your teammates</p>
+          <div class="selected-users">
+            <span *ngFor="let user of selectedUsers">{{ user.name }}</span>
+          </div>
+          <input
+            type="text"
+            class="name-input"
+            value=""
+            placeholder="Type name or email"
+          />
+          <!-- <button (click)="filter()">click</button> -->
         </div>
-        <input
-          type="text"
-          class="name-input"
-          value=""
-          placeholder="Type name or email"
-        />
         <f-dropdown [users]="users"></f-dropdown>
-        <!-- <button (click)="filter()">click</button> -->
       </div>
 
       <div class="adapt">
-        <div class="email-wrapper">
+        <div class="email-wrapper adapt">
           <div class="head">
             <p class="from">
               {{ selectedEmail.from.name }}
@@ -36,6 +38,19 @@
               {{ selectedEmail.body }}
             </p>
           </div>
+        </div>
+
+        <div class="message-wrapper">
+          <input
+            type="text"
+            class="message-input"
+            placeholder="Add a comment..."
+            name="message"
+          />
+        </div>
+
+        <div class="button-wrapper">
+          <button type="submit">Share</button>
         </div>
       </div>
     </form>
