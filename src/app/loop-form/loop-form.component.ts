@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { getMaxListeners } from 'process';
-import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 
 @Component({
   selector: 'loop-form',
@@ -9,6 +7,8 @@ import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 })
 export class LoopFormComponent {
   title = 'loop-form';
+
+  //static content
   selectedEmail = {
     from: { name: 'Mitja Potocin', email: 'mitja.potocin@gmail.com' },
     to: [{ name: 'Jobs', email: 'jobs@intheloop.com' }],
@@ -32,23 +32,26 @@ export class LoopFormComponent {
   usersOptions = this.users.slice(5);
 
   selectedUsers = [];
-
-  showDropdown = true;
+  inputFocused = false;
+  showDropdown = false;
 
   onInputFocus() {
-    this.showDropdown = true;
+    this.inputFocused = true;
+    this.handleDropdownState();
   }
 
   onInputBlur() {
-    // this.showDropdown = false;
+    this.inputFocused = false;
+    setTimeout(this.handleDropdownState, 0);
   }
 
-  onInputChange() {
-    console.log('asdasdas');
+  handleDropdownState() {
+    this.showDropdown = this.inputFocused;
   }
 
   updateSelectedUsers(user) {
-    this.selectedUsers.push(user);
+    this.selectedUsers = [...this.selectedUsers, user];
+    this.showDropdown = false;
   }
 
   filter() {

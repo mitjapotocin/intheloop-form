@@ -4,7 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   selector: 'f-dropdown',
   template: `
     <div class="dropdown" [hidden]="!showDropdown">
-      <ul *ngIf="usersOptions()">
+      <ul *ngIf="usersOptionsAvailable()">
         <li *ngFor="let user of users" (click)="handleClick(user)">
           <p class="name">
             {{ user.name }}
@@ -14,22 +14,23 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
           </p>
         </li>
       </ul>
-      <div *ngIf="!usersOptions()">No available contacts...</div>
+      <div *ngIf="!usersOptionsAvailable()">No available contacts...</div>
     </div>
   `,
   styleUrls: ['./loop-dropdown.component.scss'],
 })
 export class LoopDropdownComponent {
   title = 'dropdown';
-  @Input() users: Array<object>;
-  @Input() showDropdown: boolean;
+
+  @Input() users: { name: string; email: string }[];
+  @Input() showDropdown: string;
   @Output() eventUserClicked = new EventEmitter();
 
   handleClick(user) {
     this.eventUserClicked.emit(user);
   }
 
-  usersOptions() {
+  usersOptionsAvailable() {
     return this.users && this.users.length;
   }
 }
