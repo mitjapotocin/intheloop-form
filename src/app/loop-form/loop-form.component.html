@@ -5,9 +5,11 @@
       <div class="input-dropdown-wrapper">
         <div class="input-wrapper adapt">
           <p class="title">Share email with your teammates</p>
-          <div class="selected-users">
-            <span *ngFor="let user of selectedUsers">{{ user.name }}</span>
-          </div>
+
+          <span *ngFor="let user of selectedUsers" class="selected-user">{{
+            user.name
+          }}</span>
+
           <input
             type="text"
             class="name-input"
@@ -19,6 +21,7 @@
           <!-- <button (click)="filter()">click</button> -->
         </div>
         <f-dropdown
+          (eventUserClicked)="updateSelectedUsers($event)"
           [users]="usersOptions"
           [showDropdown]="showDropdown"
         ></f-dropdown>

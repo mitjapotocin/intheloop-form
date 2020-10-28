@@ -31,19 +31,24 @@ export class LoopFormComponent {
 
   usersOptions = this.users.slice(5);
 
-  selectedUsers = [
-    { name: 'Irina Fierro', email: 'irina.fierro@gmail.com' },
-    { name: 'Irina Fierro', email: 'irina.fierro@gmail.com' },
-  ];
+  selectedUsers = [];
 
-  showDropdown = false;
+  showDropdown = true;
 
   onInputFocus() {
     this.showDropdown = true;
   }
 
   onInputBlur() {
-    this.showDropdown = false;
+    // this.showDropdown = false;
+  }
+
+  onInputChange() {
+    console.log('asdasdas');
+  }
+
+  updateSelectedUsers(user) {
+    this.selectedUsers.push(user);
   }
 
   filter() {

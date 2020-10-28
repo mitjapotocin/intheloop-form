@@ -78,6 +78,7 @@ h1 {
 }
 
 .name-input {
+  display: inline-block;
   border: none;
   border-radius: 3px;
   border-left: 3px solid $purple;
@@ -93,16 +94,13 @@ input {
   caret-color: $purple;
 }
 
-.selected-users {
+.selected-user {
   display: inline-block;
-
-  span {
-    border-radius: 18px;
-    background: $blue;
-    color: $white;
-    margin-right: 6px;
-    padding: 6px 12px;
-  }
+  border-radius: 18px;
+  background: $blue;
+  color: $white;
+  margin: 0 6px 4px 0;
+  padding: 6px 12px;
 }
 
 .head {
