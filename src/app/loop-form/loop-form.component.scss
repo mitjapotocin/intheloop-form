@@ -98,14 +98,42 @@ input {
 }
 
 .head {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  .row {
+    display: flex;
+  }
+
+  .time {
+    margin-left: auto;
+    color: $black_light;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.6;
+  }
+
+  .replays {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+    color: $black_light;
+    border: 2px solid $black_light;
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 600;
+    opacity: 0.6;
+  }
 
   .from {
     color: $black_strong;
+    display: inline-block;
   }
   .to {
     color: $black_light;
-    font-size: 0.9em;
+    font-size: 15px;
+    display: inline-block;
   }
 }
 

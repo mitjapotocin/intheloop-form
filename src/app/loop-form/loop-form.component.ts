@@ -18,6 +18,8 @@ export class LoopFormComponent {
     subject: 'Frontend developer',
     body:
       'I enjoy being challenged and engaging with projects that require me to work outside my comfort and knowledge set, as continuing to learn new languages and development techniques are important to me and the success of your organization.',
+    replays: 1,
+    time: '23:59',
   };
   users = [
     { name: 'Harvey Flash', email: 'harvey.flash@gmail.com' },
