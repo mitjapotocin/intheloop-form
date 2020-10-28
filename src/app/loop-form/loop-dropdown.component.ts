@@ -14,7 +14,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
           </p>
         </li>
       </ul>
-      <div *ngIf="!usersOptionsAvailable()">No available contacts...</div>
+      <div class="no-contacts" *ngIf="!usersOptionsAvailable()">
+        No available contacts...
+      </div>
     </div>
   `,
   styleUrls: ['./loop-dropdown.component.scss'],

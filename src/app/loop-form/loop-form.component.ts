@@ -69,8 +69,4 @@ export class LoopFormComponent {
     // always showing max 5 results
     this.dropdownOptions = this.dropdownOptions.slice(0, 5);
   }
-
-  filter() {
-    this.users = [];
-  }
 }
