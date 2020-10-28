@@ -72,7 +72,7 @@ export class LoopFormComponent {
     this.showSuccessMessage = true;
   }
 
-  removeSelected(index) {
+  removeSelected(index: number) {
     this.usersNotSelected = [
       ...this.usersNotSelected,
       this.selectedUsers[index],
@@ -85,7 +85,6 @@ export class LoopFormComponent {
   }
 
   filterDropdownOptions() {
-    console.log(this.nameInput);
     this.dropdownOptions = this.usersNotSelected.filter((user) => {
       return (
         user.name.toLowerCase().includes(this.nameInput.toLowerCase()) ||

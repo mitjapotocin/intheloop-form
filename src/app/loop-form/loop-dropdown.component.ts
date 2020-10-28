@@ -28,7 +28,7 @@ export class LoopDropdownComponent {
   @Input() showDropdown: string;
   @Output() eventUserClicked = new EventEmitter();
 
-  handleClick(user) {
+  handleClick(user: { name: string; email: string }) {
     this.eventUserClicked.emit(user);
   }
 

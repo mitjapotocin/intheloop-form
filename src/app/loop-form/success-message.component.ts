@@ -21,7 +21,10 @@ import { Component, Input } from '@angular/core';
 export class SuccessMessageComponent {
   title = 'success-message';
 
-  @Input() formData: { message: string; selectedUsers: [] };
+  @Input() formData: {
+    message: string;
+    selectedUsers: { name: string; email: string }[];
+  };
 
   selectedUsers() {
     return this.formData.selectedUsers.length;
