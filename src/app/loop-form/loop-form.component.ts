@@ -63,6 +63,18 @@ export class LoopFormComponent {
     console.log(this.messageInput, this.nameInput);
   }
 
+  removeSelected(index) {
+    this.usersNotSelected = [
+      ...this.usersNotSelected,
+      this.selectedUsers[index],
+    ];
+
+    this.selectedUsers = [
+      ...this.selectedUsers.slice(0, index),
+      ...this.selectedUsers.slice(index + 1),
+    ];
+  }
+
   filterDropdownOptions() {
     console.log(this.nameInput);
     this.dropdownOptions = this.usersNotSelected.filter((user) => {

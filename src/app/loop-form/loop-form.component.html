@@ -5,9 +5,11 @@
       <div class="input-dropdown-wrapper">
         <div class="input-wrapper adapt">
           <p class="title">Share email with your teammates</p>
-          <span *ngFor="let user of selectedUsers" class="selected-user">{{
-            user.name
-          }}</span>
+          <span *ngFor="let user of selectedUsers; index as i">
+            <span (click)="removeSelected(i)" class="selected-user">
+              {{ user.name }}
+            </span>
+          </span>
 
           <input
             type="text"

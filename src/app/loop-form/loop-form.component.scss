@@ -89,12 +89,41 @@ input {
 }
 
 .selected-user {
+  position: relative;
   display: inline-block;
   border-radius: 18px;
   background: $blue;
   color: $white;
   margin: 0 6px 4px 0;
   padding: 4px 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  transition-delay: 0.15s;
+
+  &:after {
+    content: "remove";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $black_strong;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.15s ease-out;
+  }
+
+  &:hover {
+    color: transparent;
+    opacity: 0.6;
+
+    transition-delay: 0s;
+
+    &:after {
+      opacity: 1;
+      color: $white;
+      transition-delay: 0.15s;
+    }
+  }
 }
 
 .head {
