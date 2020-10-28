@@ -50,6 +50,7 @@ export class LoopFormComponent {
     this.usersNotSelected = this.usersNotSelected.filter((user_) => {
       return !(user_.name === user.name && user_.email === user.email);
     });
+    this.nameInput = '';
     this.showDropdown = false;
   }
 
