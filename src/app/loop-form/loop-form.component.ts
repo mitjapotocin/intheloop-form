@@ -53,29 +53,42 @@ export class LoopFormComponent {
   @HostListener('document:keyup', ['$event'])
   onKeyUp(ev: KeyboardEvent) {
     if (this.showDropdown) {
-      if (ev.key === 'ArrowDown') {
-        this.dropdownSelectedIndex = this.updateIndex(
-          'increase',
-          this.dropdownSelectedIndex,
-          0,
-          this.dropdownOptions.length - 1
-        );
-      } else if (ev.key === 'ArrowUp') {
-        this.dropdownSelectedIndex = this.updateIndex(
-          'decrease',
-          this.dropdownSelectedIndex,
-          0,
-          this.dropdownOptions.length - 1
-        );
-      } else if (ev.key === 'Enter') {
-        ev.preventDefault();
-        this.updateSelectedUsers(
-          this.dropdownOptions[this.dropdownSelectedIndex],
-          true
-        );
-        this.dropdownSelectedIndex = 0;
-      } else if (ev.key === 'Escape') {
-        this.textInputName.nativeElement.blur();
+      switch (ev.key) {
+        case 'ArrowDown':
+          {
+            this.dropdownSelectedIndex = this.updateIndex(
+              'increase',
+              this.dropdownSelectedIndex,
+              0,
+              this.dropdownOptions.length - 1
+            );
+          }
+          break;
+        case 'ArrowUp':
+          {
+            this.dropdownSelectedIndex = this.updateIndex(
+              'decrease',
+              this.dropdownSelectedIndex,
+              0,
+              this.dropdownOptions.length - 1
+            );
+          }
+          break;
+        case 'Enter':
+          {
+            ev.preventDefault();
+            this.updateSelectedUsers(
+              this.dropdownOptions[this.dropdownSelectedIndex],
+              true
+            );
+            this.dropdownSelectedIndex = 0;
+          }
+          break;
+        case 'Escape':
+          {
+            this.textInputName.nativeElement.blur();
+          }
+          break;
       }
     }
   }
