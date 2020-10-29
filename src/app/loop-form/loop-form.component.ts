@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'loop-form',
@@ -48,6 +48,8 @@ export class LoopFormComponent {
     selectedUsers: [],
   };
 
+  @ViewChild('textInputName') textInputName: any;
+
   @HostListener('document:keyup', ['$event'])
   onKeyUp(ev: KeyboardEvent) {
     if (this.showDropdown) {
@@ -72,6 +74,8 @@ export class LoopFormComponent {
           true
         );
         this.dropdownSelectedIndex = 0;
+      } else if (ev.key === 'Escape') {
+        this.textInputName.nativeElement.blur();
       }
     }
   }
