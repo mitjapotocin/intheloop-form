@@ -16,6 +16,7 @@
               </span>
             </span>
             <input
+              #textInputName
               type="text"
               class="name-input"
               (focus)="onInputFocus()"
@@ -30,6 +31,7 @@
           <f-dropdown
             (eventUserClicked)="updateSelectedUsers($event)"
             [users]="dropdownOptions"
+            [selectedIndex]="dropdownSelectedIndex"
             [showDropdown]="showDropdown"
           ></f-dropdown>
         </div>

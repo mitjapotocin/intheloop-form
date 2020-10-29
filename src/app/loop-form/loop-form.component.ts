@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'loop-form',
@@ -42,10 +42,66 @@ export class LoopFormComponent {
   showDropdown = false;
   showSuccessMessage = false;
   fieldsetDisabled = false;
+  dropdownSelectedIndex = 0;
   formData = {
     message: this.messageInput,
     selectedUsers: [],
   };
+
+  @ViewChild('textInputName') textInputName: any;
+
+  @HostListener('document:keyup', ['$event'])
+  onKeyUp(ev: KeyboardEvent) {
+    if (this.showDropdown) {
+      switch (ev.key) {
+        case 'ArrowDown':
+          {
+            this.dropdownSelectedIndex = this.updateIndex(
+              'increase',
+              this.dropdownSelectedIndex,
+              0,
+              this.dropdownOptions.length - 1
+            );
+          }
+          break;
+        case 'ArrowUp':
+          {
+            this.dropdownSelectedIndex = this.updateIndex(
+              'decrease',
+              this.dropdownSelectedIndex,
+              0,
+              this.dropdownOptions.length - 1
+            );
+          }
+          break;
+        case 'Enter':
+          {
+            ev.preventDefault();
+            this.updateSelectedUsers(
+              this.dropdownOptions[this.dropdownSelectedIndex],
+              true
+            );
+            this.dropdownSelectedIndex = 0;
+          }
+          break;
+        case 'Escape':
+          {
+            this.textInputName.nativeElement.blur();
+          }
+          break;
+      }
+    }
+  }
+
+  updateIndex(action: string, variable: number, min: number, max: number) {
+    if (action === 'increase' && variable < max) {
+      return variable + 1;
+    } else if (action === 'decrease' && variable > min) {
+      return variable - 1;
+    } else {
+      return variable;
+    }
+  }
 
   onInputFocus() {
     this.showDropdown = true;
@@ -56,25 +112,31 @@ export class LoopFormComponent {
     this.showDropdown = false;
   }
 
-  updateSelectedUsers(user: { name: string; email: string }) {
+  updateSelectedUsers(
+    user: { name: string; email: string },
+    fromKeyboardEv: boolean = false
+  ) {
     this.selectedUsers = [...this.selectedUsers, user];
     this.usersNotSelected = this.usersNotSelected.filter((user_) => {
       return !(user_.name === user.name && user_.email === user.email);
     });
     this.nameInput = '';
-    this.showDropdown = false;
+
+    fromKeyboardEv ? this.filterDropdownOptions() : (this.showDropdown = false);
   }
 
   loopSubmit() {
-    this.formData = {
-      message: this.messageInput,
-      selectedUsers: this.selectedUsers,
-    };
+    if (!this.showDropdown) {
+      this.formData = {
+        message: this.messageInput,
+        selectedUsers: this.selectedUsers,
+      };
 
-    this.showSuccessMessage = true;
+      this.showSuccessMessage = true;
 
-    if (this.formData.selectedUsers.length > 0) {
-      this.fieldsetDisabled = true;
+      if (this.formData.selectedUsers.length > 0) {
+        this.fieldsetDisabled = true;
+      }
     }
   }
 
@@ -91,6 +153,7 @@ export class LoopFormComponent {
   }
 
   filterDropdownOptions() {
+    this.dropdownSelectedIndex = 0;
     this.dropdownOptions = this.usersNotSelected.filter((user) => {
       return (
         user.name.toLowerCase().includes(this.nameInput.toLowerCase()) ||
