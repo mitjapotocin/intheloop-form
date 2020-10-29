@@ -5,13 +5,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   template: `
     <div class="dropdown" [hidden]="!showDropdown">
       <ul *ngIf="usersOptionsAvailable()">
-        <li *ngFor="let user of users" (mousedown)="handleClick(user)">
+        <li
+          *ngFor="let user of users; index as i"
+          (mousedown)="handleClick(user)"
+          [class.selected]="i === selectedIndex"
+        >
+          <!-- <div [class.selected]="i === selectedIndex"> -->
           <p class="name">
             {{ user.name }}
           </p>
           <p class="email">
             {{ user.email }}
           </p>
+          <!-- </div> -->
         </li>
       </ul>
       <div class="no-contacts" *ngIf="!usersOptionsAvailable()">
@@ -26,6 +32,7 @@ export class LoopDropdownComponent {
 
   @Input() users: { name: string; email: string }[];
   @Input() showDropdown: string;
+  @Input() selectedIndex: number;
   @Output() eventUserClicked = new EventEmitter();
 
   handleClick(user: { name: string; email: string }) {

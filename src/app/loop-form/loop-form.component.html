@@ -30,6 +30,7 @@
           <f-dropdown
             (eventUserClicked)="updateSelectedUsers($event)"
             [users]="dropdownOptions"
+            [selectedIndex]="dropdownSelectedIndex"
             [showDropdown]="showDropdown"
           ></f-dropdown>
         </div>
