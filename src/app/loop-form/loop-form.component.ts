@@ -56,22 +56,16 @@ export class LoopFormComponent {
       switch (ev.key) {
         case 'ArrowDown':
           {
-            this.dropdownSelectedIndex = this.updateIndex(
-              'increase',
-              this.dropdownSelectedIndex,
-              0,
-              this.dropdownOptions.length - 1
-            );
+            if (this.dropdownSelectedIndex < this.dropdownOptions.length - 1) {
+              this.dropdownSelectedIndex += 1;
+            }
           }
           break;
         case 'ArrowUp':
           {
-            this.dropdownSelectedIndex = this.updateIndex(
-              'decrease',
-              this.dropdownSelectedIndex,
-              0,
-              this.dropdownOptions.length - 1
-            );
+            if (this.dropdownSelectedIndex > 0) {
+              this.dropdownSelectedIndex -= 1;
+            }
           }
           break;
         case 'Enter':
@@ -90,16 +84,6 @@ export class LoopFormComponent {
           }
           break;
       }
-    }
-  }
-
-  updateIndex(action: string, variable: number, min: number, max: number) {
-    if (action === 'increase' && variable < max) {
-      return variable + 1;
-    } else if (action === 'decrease' && variable > min) {
-      return variable - 1;
-    } else {
-      return variable;
     }
   }
 
